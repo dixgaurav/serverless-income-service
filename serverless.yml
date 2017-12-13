@@ -1,0 +1,23 @@
+service: income-service
+
+frameworkVersion: ">=1.1.0 <2.0.0"
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+functions:
+  getIncome:
+    handler: handler.getIncome
+    events:
+      - http:
+          path: income
+          method: get
+
+  calculateIncome:
+      handler: handler.calculateIncome
+      events:
+        - http:
+            path: calculateIncome
+            method: post
+            cors: true
